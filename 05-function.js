@@ -14,8 +14,21 @@
 /// - (Number) total pajak yang harus kamu bayarkan
 
 /// EDIT HERE
-function taxCalc(....) { ... }
+function taxCalc(salary) {
+    if(salary < 5000000){
+        return 0;
+    }else if(salary >= 5000000 && salary < 10000000){
+        return (0.05 * salary);
+    }else if(salary >= 10000000 && salary < 20000000){
+        return (0.1 * salary);
+    }else if(salary >= 20000000){
+        return (0.2 * salary);
+    }
+}
 
+console.log(taxCalc(4500000));
+console.log(taxCalc(5000000));
+console.log(taxCalc(20000000));
 
 /// Soal - 02
 /// BMI merupakan sebuah perhitungan yang mana dapat menunjukan apakah seseorang itu masuk dalam kategori obesitas atau tidak. Kamu diminta untuk membuat sebuah fungsi untuk menghitung BMI seseorang serta dapat menentukan apakah orang tersebut obesitas atau tidak.
@@ -36,7 +49,23 @@ function taxCalc(....) { ... }
 ///   (weight/(height^2)) * 10000
 
 /// EDIT HERE
-function checkBMI(....) { .... }
+function convToUpperCase(sentence) {
+    result = sentence.split(" ");
+    for (let index = 0; index < result.length; index++) {
+        charge = result[index].toUpperCase();
+        result[index] = charge.charAt(0) + result[index].substring(1);
+    }
+
+    let result1 = "";
+    for (let index = 0; index < result.length; index++) {
+        result1 = result1 + result[index] + " ";
+    }
+
+    return result1;
+}
+
+console.log(convToUpperCase ("hello bandung"));
+console.log(convToUpperCase ("helloworldwide"));
 
 
 /// Soal - 03
@@ -49,8 +78,23 @@ function checkBMI(....) { .... }
 /// - (String) kalimat yang sudah kita ubah huruf pertamanya menjadi huruf besar
 
 /// EDIT HERE
-function convToUpperCase(....) { .... }
+function convToUpperCase(sentence) {
+    result = sentence.split(" ");
+    for (let index = 0; index < result.length; index++) {
+        charge = result[index].toUpperCase();
+        result[index] = charge.charAt(0) + result[index].substring(1);
+    }
 
+    let result1 = "";
+    for (let index = 0; index < result.length; index++) {
+        result1 = result1 + result[index] + " ";
+    }
+
+    return result1;
+}
+
+console.log(convToUpperCase ("hello bandung"));
+console.log(convToUpperCase ("helloworldwide"));
 
 /// Soal - 04
 /// Buatlah sebuah fungsi yang mana nanti akan mengembalikan HURUF PERTAMA YANG TIDAK KEMBAR
@@ -67,4 +111,16 @@ function convToUpperCase(....) { .... }
 /// (String) huruf yang pertama kali tidak ada kembarannya
 
 /// EDIT HERE
-function firstNonRepeatedChar(....) { .... }
+function firstNonRepeatedChar(str) {
+	for (let i = 0; i < str.length; i++) {
+		let char = str[i];
+		if (/\s/g.test(str)) {
+			return "kata tidak boleh dipisah";
+		} else if (str.indexOf(char) == i && str.indexOf(char, i + 1) == -1) {
+			return char;
+		}
+	}
+	return " ";
+}
+
+console.log(firstNonRepeatedChar("alloha"));
