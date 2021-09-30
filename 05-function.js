@@ -49,23 +49,27 @@ console.log(taxCalc(20000000));
 ///   (weight/(height^2)) * 10000
 
 /// EDIT HERE
-function convToUpperCase(sentence) {
-    result = sentence.split(" ");
-    for (let index = 0; index < result.length; index++) {
-        charge = result[index].toUpperCase();
-        result[index] = charge.charAt(0) + result[index].substring(1);
+function checkBMI(height, weight) {
+    let BMI = weight/(height*height) * 10000;
+    console.log(BMI);
+    let result;
+    if(BMI < 18.5){
+        result =  "under weight";
+    }else if(18.5 < BMI && BMI <= 24.9){
+        result =  "normal";
+    }else if(25 < BMI && BMI <= 29.9){
+        result =  "over weight";
+    }else if(30 < BMI && BMI <= 34.9){
+        result =  "obese";
+    }else if(35 <= BMI){
+        result =  "extremely obese";
     }
 
-    let result1 = "";
-    for (let index = 0; index < result.length; index++) {
-        result1 = result1 + result[index] + " ";
-    }
-
-    return result1;
+    return result;
 }
 
-console.log(convToUpperCase ("hello bandung"));
-console.log(convToUpperCase ("helloworldwide"));
+console.log(checkBMI(170,80));
+console.log(checkBMI(160,80));
 
 
 /// Soal - 03
@@ -111,16 +115,34 @@ console.log(convToUpperCase ("helloworldwide"));
 /// (String) huruf yang pertama kali tidak ada kembarannya
 
 /// EDIT HERE
-function firstNonRepeatedChar(str) {
-	for (let i = 0; i < str.length; i++) {
-		let char = str[i];
-		if (/\s/g.test(str)) {
-			return "kata tidak boleh dipisah";
-		} else if (str.indexOf(char) == i && str.indexOf(char, i + 1) == -1) {
-			return char;
-		}
-	}
-	return " ";
+function firstNonRepeatedChar(word) {
+    let huruf;
+
+    for (let index = 0; index < word.length; index++) {
+        huruf = word[index];
+        if(huruf == " "){
+            return "kata tidak boleh dipisah";
+        }
+        
+    }
+
+    for (let index = 0; index < word.length; index++) {
+        huruf = word[index];
+        let cek = false;
+        for (let j = 0; j < word.length; j++) {
+            if(huruf == word[j] && j != index){
+                cek = true;
+                break;
+            }
+        }
+        if(cek == false){
+            return huruf;
+            break;
+        }
+    }
+    return "";
 }
 
-console.log(firstNonRepeatedChar("alloha"));
+console.log(firstNonRepeatedChar("hello world"));
+console.log(firstNonRepeatedChar("allohaaaa"));
+console.log(firstNonRepeatedChar("wooohoooowh"));
